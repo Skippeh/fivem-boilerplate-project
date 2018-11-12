@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilerplateResourceClient", "BoilerplateResourceClient\BoilerplateResourceClient.csproj", "{0091708A-50C4-4A68-95BA-41FA99C75108}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilerplateResourceServer", "BoilerplateResourceServer\BoilerplateResourceServer.csproj", "{49DE6D29-578D-487D-A24D-294EE2AA7BB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilerplateResourceShared", "BoilerplateResourceShared\BoilerplateResourceShared.csproj", "{74858DDE-54F4-4EBD-8133-755F6AAC1141}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0091708A-50C4-4A68-95BA-41FA99C75108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0091708A-50C4-4A68-95BA-41FA99C75108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0091708A-50C4-4A68-95BA-41FA99C75108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0091708A-50C4-4A68-95BA-41FA99C75108}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49DE6D29-578D-487D-A24D-294EE2AA7BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49DE6D29-578D-487D-A24D-294EE2AA7BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49DE6D29-578D-487D-A24D-294EE2AA7BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49DE6D29-578D-487D-A24D-294EE2AA7BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74858DDE-54F4-4EBD-8133-755F6AAC1141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74858DDE-54F4-4EBD-8133-755F6AAC1141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74858DDE-54F4-4EBD-8133-755F6AAC1141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74858DDE-54F4-4EBD-8133-755F6AAC1141}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
