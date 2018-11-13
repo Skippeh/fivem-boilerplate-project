@@ -402,4 +402,4 @@ modules.xml
 
 # End of https://www.gitignore.io/api/jetbrains+all
 
-GOIModdingAPI/DevVars\.targets
+DevVars\.targets
