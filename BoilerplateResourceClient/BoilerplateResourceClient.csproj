@@ -49,6 +49,10 @@
       <Project>{74858dde-54f4-4ebd-8133-755f6aac1141}</Project>
       <Name>BoilerplateResourceShared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ManifestGenerator\ManifestGenerator.csproj">
+      <Project>{4b25238c-2269-49ea-97ae-e9d791c9257e}</Project>
+      <Name>ManifestGenerator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)DevVars.targets" />
@@ -57,7 +61,7 @@
       <OutputFiles Include="$(TargetPath)" />
     </ItemGroup>
     <Copy SourceFiles="@(OutputFiles)" DestinationFiles="@(OutputFiles->'$(ServerDirectory)\server-data\resources\[dev]\$(SolutionName)\%(RecursiveDir)%(Filename)%(Extension)')" />
-    <Exec Condition="'$(OS)' == 'Windows_NT'" Command='powershell.exe -File "$(SolutionDir)copy_resource_template.ps1" "$(SolutionDir)resource_template.lua" "$(ServerDirectory)\server-data\resources\[dev]\$(SolutionName)\__resource.lua" $(SolutionName)Shared.net.dll $(SolutionName)Client.net.dll $(SolutionName)Server.net.dll' />
-    <Exec Condition="'$(OS)' != 'Windows_NT'" Command='"$(SolutionDir)copy_resource_template.sh" "$(SolutionDir)resource_template.lua" "$(ServerDirectory)/server-data/resources/[dev]/$(SolutionName)/__resource.lua" $(SolutionName)Shared.net.dll $(SolutionName)Client.net.dll $(SolutionName)Server.net.dll' />
+    <Exec Condition="'$(OS)' == 'Windows_NT'" Command="cd &quot;$(SolutionDir)&quot; &amp; post_build.bat &quot;$(SolutionDir)resource_template.lua&quot; &quot;$(ServerDirectory)/server-data/resources/[dev]/$(SolutionName)/__resource.lua&quot; &quot;$(Configuration)&quot;" />
+    <Exec Condition="'$(OS)' != 'Windows_NT'" Command="cd &quot;$(SolutionDir)&quot; ; ./post_build.sh &quot;$(SolutionDir)resource_template.lua&quot; &quot;$(ServerDirectory)/server-data/resources/[dev]/$(SolutionName)/__resource.lua&quot; &quot;$(Configuration)&quot;" />
   </Target>
 </Project>

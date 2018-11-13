@@ -1,0 +1,1 @@
+mono ./ManifestGenerator/bin/$3/ManifestGenerator.exe --resourceTemplate ./resource_template.lua --outputPath $2 --assemblies "./BoilerplateResourceClient/bin/$3/BoilerplateResourceShared.net.dll" "./BoilerplateResourceServer/bin/$3/BoilerplateResourceServer.net.dll" "./BoilerplateResourceShared/bin/$3/BoilerplateResourceShared.net.dll"

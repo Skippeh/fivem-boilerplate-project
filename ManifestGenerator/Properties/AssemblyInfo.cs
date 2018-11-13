@@ -1,17 +1,15 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
-using ManifestGenerator;
-using ManifestGenerator.AssemblyAttributes;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BoilerplateResourceShared")]
+[assembly: AssemblyTitle("FiveM Manifest Generator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BoilerplateResourceShared")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyProduct("FiveM Manifest Generator")]
+[assembly: AssemblyCopyright("MIT License")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -21,7 +19,7 @@ using ManifestGenerator.AssemblyAttributes;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("74858DDE-54F4-4EBD-8133-755F6AAC1141")]
+[assembly: Guid("4B25238C-2269-49EA-97AE-E9D791C9257E")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -35,5 +33,3 @@ using ManifestGenerator.AssemblyAttributes;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-[assembly: AssemblyType(AssemblyType.Shared)]

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{74858DDE-54F4-4EBD-8133-755F6AAC1141}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{4B25238C-2269-49EA-97AE-E9D791C9257E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BoilerplateResourceShared</RootNamespace>
-    <AssemblyName>BoilerplateResourceShared.net</AssemblyName>
+    <RootNamespace>ManifestGenerator</RootNamespace>
+    <AssemblyName>ManifestGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,28 +32,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandLine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32">
+      <HintPath>..\packages\CommandLineParser.2.3.0\lib\net45\CommandLine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyAttributes\AssemblyTypeAttribute.cs" />
+    <Compile Include="AssemblyType.cs" />
+    <Compile Include="Generator.cs" />
+    <Compile Include="InvalidResourceAssemblyException.cs" />
+    <Compile Include="LaunchArguments.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ManifestGenerator\ManifestGenerator.csproj">
-      <Project>{4b25238c-2269-49ea-97ae-e9d791c9257e}</Project>
-      <Name>ManifestGenerator</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)DevVars.targets" />
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <ItemGroup>
-      <OutputFiles Include="$(TargetPath)" />
-    </ItemGroup>
-    <Copy SourceFiles="@(OutputFiles)" DestinationFiles="@(OutputFiles->'$(ServerDirectory)\server-data\resources\[dev]\$(SolutionName)\%(RecursiveDir)%(Filename)%(Extension)')" />
-    <Exec Condition="'$(OS)' == 'Windows_NT'" Command="cd &quot;$(SolutionDir)&quot; &amp; post_build.bat &quot;$(SolutionDir)resource_template.lua&quot; &quot;$(ServerDirectory)/server-data/resources/[dev]/$(SolutionName)/__resource.lua&quot; &quot;$(Configuration)&quot;" />
-    <Exec Condition="'$(OS)' != 'Windows_NT'" Command="cd &quot;$(SolutionDir)&quot; ; ./post_build.sh &quot;$(SolutionDir)resource_template.lua&quot; &quot;$(ServerDirectory)/server-data/resources/[dev]/$(SolutionName)/__resource.lua&quot; &quot;$(Configuration)&quot;" />
-  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
 </Project>
