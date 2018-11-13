@@ -30,4 +30,4 @@ Setting up a development environment for every new project is a tedious process 
 ## Todo
 * Easy way to remove an unneeded project (such as server and shared for a clientside only resource).
 * Add a content folder which will be copied to the resource folder after building project.
-* Add dependant dll's to `__resource.lua` automatically.
+* Add dependant client/shared dll's to the client_files in `__resource.lua` automatically.
