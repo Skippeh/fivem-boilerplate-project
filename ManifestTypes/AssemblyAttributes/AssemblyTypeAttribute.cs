@@ -1,7 +1,6 @@
 ﻿using System;
-using CommandLine.Text;
 
-namespace ManifestGenerator.AssemblyAttributes
+namespace ManifestTypes.AssemblyAttributes
 {
     /// <summary>
     /// Specifies what kind of resource script type this assembly is.

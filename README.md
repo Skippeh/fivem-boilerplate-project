@@ -11,7 +11,7 @@ Setting up a development environment for every new project is a tedious process 
     * **The values should not end with a directory separator! Doing so might make the build fail.**
 3. When building the project, the resource will be copied to the following folder: `[FiveM_Server]\server-data\[dev]\[NameOfSolution]\`. A `__resource.lua` file will be generated automatically.
 
-## Renaming the project
+## Renaming the projects
 1. Rename the solution and the projects the normal way using your IDE.
 2. Change the assembly name of each project (client, server, shared) to match the new name. Make sure the assembly name ends in `.net` (*important!* otherwise the server will not load the dll's).
     * Depending on your IDE, the project folders might not be renamed, you'll have to do that manually.
@@ -41,6 +41,7 @@ Setting up a development environment for every new project is a tedious process 
     <HintPath>$(ServerDirectory)\citizen\clr2\lib\mono\4.5\CitizenFX.Core.dll</HintPath>
 </Reference>
 ```
+* Look at the other project's `.csproj` files to set up automatically copying files to the server's resource folder.
 
 ## Automatically copying dependant assemblies to the resource folder
 1. Open the .csproj file for the project that depends on an assembly.

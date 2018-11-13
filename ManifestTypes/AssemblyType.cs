@@ -1,4 +1,4 @@
-﻿namespace ManifestGenerator
+﻿namespace ManifestTypes
 {
     public enum AssemblyType
     {

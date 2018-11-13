@@ -1,16 +1,14 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
-using ManifestTypes;
-using ManifestTypes.AssemblyAttributes;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BoilerplateResourceClient")]
+[assembly: AssemblyTitle("ManifestTypes")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BoilerplateResourceClient")]
+[assembly: AssemblyProduct("ManifestTypes")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -21,7 +19,7 @@ using ManifestTypes.AssemblyAttributes;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0091708A-50C4-4A68-95BA-41FA99C75108")]
+[assembly: Guid("5D39CAAD-C545-427B-A52A-270D4C745A5D")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -35,5 +33,3 @@ using ManifestTypes.AssemblyAttributes;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-[assembly: AssemblyType(AssemblyType.Client)]

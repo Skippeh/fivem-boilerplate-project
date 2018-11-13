@@ -42,8 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyAttributes\AssemblyTypeAttribute.cs" />
-    <Compile Include="AssemblyType.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="InvalidResourceAssemblyException.cs" />
     <Compile Include="LaunchArguments.cs" />
@@ -52,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ManifestTypes\ManifestTypes.csproj">
+      <Project>{5d39caad-c545-427b-a52a-270d4c745a5d}</Project>
+      <Name>ManifestTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

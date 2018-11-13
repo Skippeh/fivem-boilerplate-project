@@ -4,7 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using ManifestGenerator.AssemblyAttributes;
+using ManifestTypes;
+using ManifestTypes.AssemblyAttributes;
 
 namespace ManifestGenerator
 {
