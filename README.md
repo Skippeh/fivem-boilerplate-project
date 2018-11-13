@@ -8,7 +8,7 @@ Setting up a development environment for every new project is a tedious process 
 2. Open the file and replace the values.
     * The FiveMDirectory value should point to the directory that contains the `FiveM.app` (potentially aliased as `FiveM Application Data`) folder. This is probably in %localappdata%\FiveM if you're unsure.
     * The ServerDirectory value should point to the root of your server directory. [Make sure you've installed your server properly](https://docs.fivem.net/server-manual/setting-up-a-server/), or building will probably fail when copying the resource files to the resources folder.
-    * **They values should not end with a directory separator! Doing so might make the build fail.**
+    * **The values should not end with a directory separator! Doing so might make the build fail.**
 3. When building the project, the resource will be copied to the following folder: `[FiveM_Server]\server-data\\[dev]\\[NameOfSolution]\\`. A `__resource.lua` file will be generated automatically.
 
 ## Renaming the project
