@@ -29,17 +29,22 @@ Setting up a development environment for every new project is a tedious process 
     * For example, if the project is called `MyResource`, change the assembly name to `MyResource.net`.
 4. Add a reference to the ManifestGenerator project.
 5. Add `[assembly: AssemblyType(AssemblyType.Client/Server/Shared)]` to the AssemblyInfo.cs file. It will decide where the script ends up in the resource.lua file.
-4. Open up the project's `.csproj` file and add one of the following references:
+4. Open up the project's `.csproj` file and add the following:
 ```xml
 <!-- Clientside -->
 <Reference Include="CitizenFX.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <HintPath>$(FiveMDirectory)\FiveM.app\citizen\clr2\lib\mono\4.5\CitizenFX.Core.dll</HintPath>
 </Reference>
 
+<!-- OR -->
+
 <!-- Serverside or shared -->
 <Reference Include="CitizenFX.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <HintPath>$(ServerDirectory)\citizen\clr2\lib\mono\4.5\CitizenFX.Core.dll</HintPath>
 </Reference>
+
+<!-- Add the following to the bottom, right before </Project> -->
+<Import Project="$(SolutionDir)DevVars.targets" />
 ```
 * Look at the other project's `.csproj` files to set up automatically copying files to the server's resource folder.
 
