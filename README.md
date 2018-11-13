@@ -14,9 +14,33 @@ Setting up a development environment for every new project is a tedious process 
 ## Renaming the project
 1. Rename the solution and the projects the normal way using your IDE.
 2. Change the assembly name of each project (client, server, shared) to match the new name. Make sure the assembly name ends in `.net` (*important!* otherwise the server will not load the dll's).
-    * **Each project's name needs to match the solution name, followed by Server/Client/Shared, otherwise building will fail!**
-        * For example: If you rename project to `MyResource`, each project needs to be named `MyResourceClient`, `MyResourceServer`, `MyResourceShared`.
     * Depending on your IDE, the project folders might not be renamed, you'll have to do that manually.
+
+## Remove a project
+1. Delete the unnecessary project from the solution.
+2. Open `post_build.bat` or `post_build.sh` depending on your OS.
+3. Remove the path to the deleted project from the --assemblies commandline argument.
+4. Optionally, if you have built the deleted project, go to the resource in your server folder and delete the assembly file there too.
+
+## Add a new project
+1. Create a new class library targeting .net 4.5.2.
+2. Change platform target to x64 on all build configurations (Debug, Release).
+3. Append `.net` to the assembly name.
+    * For example, if the project is called `MyResource`, change the assembly name to `MyResource.net`.
+4. Add a reference to the ManifestGenerator project.
+5. Add `[assembly: AssemblyType(AssemblyType.Client/Server/Shared)]` to the AssemblyInfo.cs file. It will decide where the script ends up in the resource.lua file.
+4. Open up the project's `.csproj` file and add one of the following references:
+```xml
+<!-- Clientside -->
+<Reference Include="CitizenFX.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <HintPath>$(FiveMDirectory)\FiveM.app\citizen\clr2\lib\mono\4.5\CitizenFX.Core.dll</HintPath>
+</Reference>
+
+<!-- Serverside or shared -->
+<Reference Include="CitizenFX.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <HintPath>$(ServerDirectory)\citizen\clr2\lib\mono\4.5\CitizenFX.Core.dll</HintPath>
+</Reference>
+```
 
 ## Automatically copying dependant assemblies to the resource folder
 1. Open the .csproj file for the project that depends on an assembly.
@@ -28,6 +52,5 @@ Setting up a development environment for every new project is a tedious process 
     * Files are copied with their folders remaining intact. Meaning the above example would be copied to `resources\[dev]\BoilerplateResource\deps\`.
 
 ## Todo
-* Easy way to remove an unneeded project (such as server and shared for a clientside only resource).
 * Add a content folder which will be copied to the resource folder after building project.
-* Add dependant client/shared dll's to the client_script in `__resource.lua` automatically.
+* Add dependant client/shared dll's to `files` in `__resource.lua` automatically.
