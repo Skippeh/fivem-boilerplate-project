@@ -24,7 +24,7 @@ Setting up a development environment for every new project is a tedious process 
     1. For each dependant assembly file, add this line:
         * \<OutputFiles Include="$(TargetPath)NameOfDll.dll" />
     * Wildcard selections work as well:
-        * \<OutputFiles Include="$(TargetPath)\deps\*.dll />
+        * \<OutputFiles Include="$(TargetPath)deps\*.dll />
     * Files are copied with their folders remaining intact. Meaning the above example would be copied to `resources\[dev]\BoilerplateResource\deps\`.
 
 ## Todo
