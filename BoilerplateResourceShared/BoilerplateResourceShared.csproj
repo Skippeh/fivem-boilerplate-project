@@ -41,6 +41,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ManifestGenerator\ManifestGenerator.csproj">
+      <Project>{4b25238c-2269-49ea-97ae-e9d791c9257e}</Project>
+      <Name>ManifestGenerator</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="..\ManifestTypes\ManifestTypes.csproj">
       <Project>{5d39caad-c545-427b-a52a-270d4c745a5d}</Project>
       <Name>ManifestTypes</Name>
