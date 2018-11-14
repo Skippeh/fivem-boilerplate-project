@@ -10,6 +10,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManifestGenerator", "Manife
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManifestTypes", "ManifestTypes\ManifestTypes.csproj", "{5D39CAAD-C545-427B-A52A-270D4C745A5D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Meta", "Meta", "{59C778CE-974E-4A09-A40F-C48A6AA91FDF}"
+ProjectSection(SolutionItems) = preProject
+	resource_template.lua = resource_template.lua
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
