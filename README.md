@@ -56,6 +56,3 @@ Setting up a development environment for every new project is a tedious process 
     * Wildcard selections work as well:
         * \<OutputFiles Include="$(TargetPath)deps\\*.dll />
     * Files are copied with their folders remaining intact. Meaning the above example would be copied to `resources\[dev]\BoilerplateResource\deps\`.
-
-## Todo
-* Add a content folder which will be copied to the resource folder after building project.
