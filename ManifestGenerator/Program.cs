@@ -29,8 +29,15 @@ namespace ManifestGenerator
                     Console.WriteLine($"Warning: Could not find assembly file at: \"{assemblyPath}\". This may not be a problem if this is a clean build.");
                     continue;
                 }
-                
-                generator.LoadAssembly(assemblyPath);
+
+                try
+                {
+                    generator.LoadAssembly(assemblyPath);
+                }
+                catch (InvalidResourceAssemblyException ex)
+                {
+                    Console.Error.WriteLine("Error: " + ex.Message);
+                }
             }
 
             string resourceFileContents = generator.GenerateString(File.ReadAllText(options.ResourceTemplateFileName));
