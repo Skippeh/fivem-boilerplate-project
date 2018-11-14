@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using ManifestTypes;
 using ManifestTypes.AssemblyAttributes;
 
@@ -86,6 +87,8 @@ namespace ManifestGenerator
             result = result.Replace("{SCRIPTS}", GenerateScriptsString());
             result = result.Replace("{FILES}", GenerateFilesString());
             result = result.Replace("{SERVER_ONLY}", GenerateServerOnlyString());
+
+            result = Regex.Replace(result, @"(?<=(?:\r?\n){2}|\A)(?:\r?\n)+", ""); // Replace multiple empty lines in a row with a single empty line.
 
             return result.Trim();
         }
