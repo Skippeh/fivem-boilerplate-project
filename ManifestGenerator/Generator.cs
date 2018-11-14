@@ -99,12 +99,12 @@ namespace ManifestGenerator
 
             if (clientAssemblies.Count > 0)
             {
-                builder.AppendLine($"client_scripts {{\n\t{string.Join(",\n\t", sharedAssemblies.Concat(clientAssemblies))}\n}}\n");
+                builder.AppendLine($"client_scripts {{\n\t{string.Join(",\n\t", sharedAssemblies.Concat(clientAssemblies).Select(name => $"\"{name}\""))}\n}}\n");
             }
             
             if (serverAssemblies.Count > 0)
             {
-                builder.AppendLine($"server_scripts {{\n\t{string.Join(",\n\t", sharedAssemblies.Concat(serverAssemblies))}\n}}");
+                builder.AppendLine($"server_scripts {{\n\t{string.Join(",\n\t", sharedAssemblies.Concat(serverAssemblies).Select(name => $"\"{name}\""))}\n}}");
             }
 
             return builder.ToString().Trim();
@@ -112,7 +112,7 @@ namespace ManifestGenerator
 
         private string GenerateFilesString()
         {
-            return string.Join(",\n\t", files);
+            return string.Join(",\n\t", files.Select(file => $"\"{file}\""));
         }
 
         private string GenerateServerOnlyString()
