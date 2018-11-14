@@ -24,7 +24,7 @@ Setting up a development environment for every new project is a tedious process 
 
 ## Add a new project
 1. Create a new class library targeting .net 4.5.2.
-2. Change platform target to x64 on all build configurations (Debug, Release).
+2. Make sure the platform target is set to AnyCPU on all build configurations (Debug, Release).
 3. Append `.net` to the assembly name.
     * For example, if the project is called `MyResource`, change the assembly name to `MyResource.net`.
 4. Add a reference to the ManifestGenerator project.
