@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -43,6 +43,7 @@ namespace ManifestGenerator
                     break;
                 case AssemblyType.Shared:
                     sharedAssemblies.Add(fileName);
+                    files.Add(Path.GetFileName(fileName));
                     serverOnly = false;
                     break;
                 default: throw new InvalidResourceAssemblyException("The assembly's AssemblyType attribute has an unknown value.");
