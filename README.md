@@ -59,4 +59,3 @@ Setting up a development environment for every new project is a tedious process 
 
 ## Todo
 * Add a content folder which will be copied to the resource folder after building project.
-* Add dependant client/shared dll's to `files` in `__resource.lua` automatically.
