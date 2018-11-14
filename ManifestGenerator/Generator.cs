@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using ManifestTypes;
 using ManifestTypes.AssemblyAttributes;
@@ -14,12 +15,15 @@ namespace ManifestGenerator
         private readonly List<string> clientAssemblies = new List<string>();
         private readonly List<string> serverAssemblies = new List<string>();
         private readonly List<string> sharedAssemblies = new List<string>();
+        private readonly List<string> files = new List<string>();
+        private bool serverOnly = false;
         
         /// <summary>
         /// Adds an assembly to be used as a resource script.
         /// </summary>
         public Generator LoadAssembly(string filePath)
         {
+            string directory = Path.GetDirectoryName(filePath);
             string fileName = Path.GetFileName(filePath);
             var assembly = Assembly.LoadFrom(filePath);
 
@@ -32,14 +36,38 @@ namespace ManifestGenerator
             {
                 case AssemblyType.Client:
                     clientAssemblies.Add(fileName);
+                    serverOnly = false;
                     break;
                 case AssemblyType.Server:
                     serverAssemblies.Add(fileName);
                     break;
                 case AssemblyType.Shared:
                     sharedAssemblies.Add(fileName);
+                    serverOnly = false;
                     break;
                 default: throw new InvalidResourceAssemblyException("The assembly's AssemblyType attribute has an unknown value.");
+            }
+
+            // Add dependant assemblies for shared/client assemblies
+            if (assemblyType.Type != AssemblyType.Server)
+            {
+                AssemblyName[] referencedAssemblies = assembly.GetReferencedAssemblies();
+
+                foreach (AssemblyName refAssembly in referencedAssemblies)
+                {
+                    if (refAssembly.Name == "CitizenFX.Core")
+                        continue;
+                    
+                    string refFilePath = Path.Combine(directory, $"{refAssembly.Name}.dll");
+
+                    if (File.Exists(refFilePath))
+                    {
+                        string refFileName = Path.GetFileName(refFilePath);
+
+                        if (!files.Any(file => string.Equals(file, refFileName, StringComparison.InvariantCultureIgnoreCase)))
+                            files.Add(refFileName);
+                    }
+                }
             }
 
             return this;
@@ -55,6 +83,8 @@ namespace ManifestGenerator
             string result = template;
 
             result = result.Replace("{SCRIPTS}", GenerateScriptsString());
+            result = result.Replace("{FILES}", GenerateFilesString());
+            result = result.Replace("{SERVER_ONLY}", GenerateServerOnlyString());
 
             return result.Trim();
         }
@@ -74,6 +104,19 @@ namespace ManifestGenerator
             }
 
             return builder.ToString().Trim();
+        }
+
+        private string GenerateFilesString()
+        {
+            return string.Join(",\n\t", files);
+        }
+
+        private string GenerateServerOnlyString()
+        {
+            if (serverOnly)
+                return "server_only \"yes\"";
+
+            return string.Empty;
         }
     }
 }
